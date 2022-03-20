@@ -4,7 +4,7 @@ import {TopicServiceAPI} from "../api-client";
 import {Link} from "react-router-dom";
 
 
-export function TopicListViewContainer() {
+export function SurveyListViewContainer() {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState([]);
@@ -20,11 +20,6 @@ export function TopicListViewContainer() {
       field: "topic",
       title: "Topic",
       order: 2,
-    },
-    {
-      field: "score",
-      title: "Score",
-      order: 3,
     },
   ];
 
@@ -46,11 +41,10 @@ export function TopicListViewContainer() {
   }, [])
 
 
-  return <Card title={"Topic List"} error={error} loading={loading}>
+  return <Card title={"Survey List"} error={error} loading={loading}>
     <div className="mb-3 float-end">
-      <Link to="new" className="btn btn-primary fl-right">Create Topic</Link>
+      <Link to="/topics" className="btn btn-primary fl-right">Topics</Link>
     </div>
-    <Table model={tableModel} data={data} editUrl={(item) => `${item.id}`}/>
+    <Table model={tableModel} data={data} editLabel="Go to Survey" editUrl={(item) => `/survey/${item.id}`}/>
   </Card>
-
 }

@@ -2,38 +2,40 @@ import {httpClient} from "./http-client";
 import {Endpoints} from "./endpoints";
 
 class TopicService {
-    constructor(httpClient) {
-        this.client = httpClient;
-    }
+  #client
 
-    getTopics() {
-        return this.client.get(Endpoints.Topics());
-    }
+  constructor(httpClient) {
+    this.#client = httpClient;
+  }
 
-
-    getTopicById(id) {
-        return this.client.get(Endpoints.TopicById(id));
-    }
+  getTopics() {
+    return this.#client.get(Endpoints.Topics());
+  }
 
 
-    getTopicAnswersByTopicId(id) {
-        return this.client.get(Endpoints.AnswersByTopicId(id));
-    }
+  getTopicById(id) {
+    return this.#client.get(Endpoints.TopicById(id));
+  }
 
 
-    createTopic(topic) {
-        return this.client.post(Endpoints.Topics());
-    }
+  getTopicAnswersByTopicId(id) {
+    return this.#client.get(Endpoints.AnswersByTopicId(id));
+  }
 
 
-    updateTopic(id, topic) {
-        return this.client.put(Endpoints.TopicById(id), topic);
-    }
+  createTopic(topic) {
+    return this.#client.post(Endpoints.Topics(), topic);
+  }
 
 
-    deleteTopicById(id) {
-        return this.client.delete(Endpoints.TopicById(id));
-    }
+  updateTopic(id, topic) {
+    return this.#client.put(Endpoints.TopicById(id), topic);
+  }
+
+
+  deleteTopicById(id) {
+    return this.#client.delete(Endpoints.TopicById(id));
+  }
 }
 
 const TopicServiceAPI = new TopicService(httpClient);
