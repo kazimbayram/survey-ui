@@ -1,25 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+    BrowserRouter as Router, Routes, Route, Link, Redirect, Navigate
+} from "react-router-dom";
+import {SurveyViewContainer, TopicDetailsViewContainer, TopicListViewContainer} from "./containers";
+import {NewTopicViewContainer} from "./containers/NewTopicViewContainer";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    return (
+        <Router>
+            <div>
+                <ul>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/survey/15">Survey/15</Link>
+                    </li>
+                    <li>
+                        <Link to="/topics">Topics</Link>
+                    </li>
+                    <li>
+                        <Link to="/topics/10">Topic/10</Link>
+                    </li>
+                    <li>
+                        <Link to="/topics/new">New Topic</Link>
+                    </li>
+                </ul>
+
+                <Routes>
+                    <Route path="/" element={<Navigate to={"/topics"}/>}/>
+                    <Route path="/survey/:topicId" element={<SurveyViewContainer/>}/>
+                    <Route path="/topics" element={<TopicListViewContainer/>}/>
+                    <Route path="/topics/:topicId" element={<TopicDetailsViewContainer/>}/>
+                    <Route path="/topics/new" element={<NewTopicViewContainer/>}/>
+                    <Route path="*" element={<Navigate to={"/topics"}/>}/>
+                </Routes>
+            </div>
+        </Router>
+    )
+        ;
 }
 
 export default App;
