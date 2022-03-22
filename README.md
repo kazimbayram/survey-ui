@@ -22,3 +22,7 @@ Start application with `npm start`
 run `npm run build`
 
 The build located in `/build` folder.
+
+## TODO
+
+[] Dockerize the application
