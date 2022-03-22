@@ -1,7 +1,7 @@
 Survey UI
 ============
 
-This is a UI for [https://github.com/kazimbayram/survey-api](survey-api) developed in React. The main functions that create single question survey, collect scores with the range of 1-10 and feedback as text. And see answers.
+This is a UI for [survey-api](https://github.com/kazimbayram/survey-api) project in React. The main functions that create single question survey, collect scores with the range of 1-10 and feedback as text. And see answers.
 
 ## Features
 - Topic Creation
@@ -20,3 +20,5 @@ Start application with `npm start`
 ## Package
 
 run `npm run build`
+
+The build located in `/dist`.
