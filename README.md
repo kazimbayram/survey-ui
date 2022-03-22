@@ -21,4 +21,4 @@ Start application with `npm start`
 
 run `npm run build`
 
-The build located in `/dist`.
+The build located in `/build` folder.
